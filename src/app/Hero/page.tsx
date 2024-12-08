@@ -2,15 +2,14 @@ import Hero from "@/components/hero"
 import HeroTeam from "@/components/HeroTeam"
 import FreeTrail from "@/components/freetrail"
 
-
-function HomePage(){
+export default function HomePage(){
     return(
        <div>
-       <Hero />
+        
+         <Hero />
          <HeroTeam />
          <FreeTrail />
        
        </div>
     )
 }
-export default HomePage

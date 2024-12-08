@@ -1,20 +1,23 @@
-import { title } from "process";
+// import { title } from "process";
 import React from "react";
 
-// PricingCard Component
-
-interface cards{
-  title:"string";
-  prize:"number";
-  features:"string";
-  
+// Define the props type for the PricingCard component
+interface PricingCardProps {
+  title: string;
+  price: number;
+  features: string[];
 }
-function PricingCard({ title, price, features }) {
+
+const PricingCard: React.FC<PricingCardProps> = ({ title, price, features }) => {
   return (
-    
     <div className="bg-white shadow-md rounded px-8 py-12 transition duration-300 hover:shadow-lg">
+      {/* Card Title */}
       <h2 className="text-2xl font-bold mb-4 text-gray-900">{title}</h2>
+
+      {/* Price */}
       <p className="text-4xl font-bold mb-8 text-blue-600">${price}/Month</p>
+
+      {/* Features List */}
       <ul>
         {features.map((feature, index) => (
           <li key={index} className="flex items-center mb-2 text-gray-700">
@@ -36,29 +39,30 @@ function PricingCard({ title, price, features }) {
           </li>
         ))}
       </ul>
+
+      {/* Call to Action Button */}
       <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-6">
         Try for free
       </button>
     </div>
   );
-}
-  
-// PricingSection Component
+};
+
 const PricingSection = () => {
   const pricingData = [
     {
       title: "Free",
-      price: "0",
+      price: 0, // Corrected to number
       features: ["Unlimited product updates", "1GB Cloud storage", "Email and community support"],
     },
     {
       title: "Pro",
-      price: "29",
+      price: 29, // Corrected to number
       features: ["Advanced analytics", "Priority support", "10GB Cloud storage"],
     },
     {
       title: "Enterprise",
-      price: "99",
+      price: 99, // Corrected to number
       features: ["Custom integrations", "Dedicated support", "Unlimited storage"],
     },
   ];
