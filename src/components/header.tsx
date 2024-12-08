@@ -31,17 +31,22 @@ function Header() {
                     >
                         <ul className='flex flex-col md:flex-row md:gap-x-2 lg:gap-x-5 xl:gap-x-5 2xl:gap-x-10 sm:text-md md:text-sm lg:text-md xl:text-md text-gray-400 md:text-black font-bold'>
                             <li className='p-4 hover:underline underline-offset-2'>
-                                <Link href="/">Home</Link>
+                                <Link href="/Hero">Home</Link>
                             </li>
+                            
                             <li className='p-4 hover:underline underline-offset-2'>
-                                <Link href="/contact">Product</Link>
+                                <Link href="/about">About</Link>
                             </li>
+                            
+                            
                             <li className='p-4 hover:underline underline-offset-2'>
-                                <Link href="/about">Pricing</Link>
+                                <Link href="/contact">Contact</Link>
                             </li>
+                           
                             <li className='p-4 hover:underline underline-offset-2'>
-                                <Link href="/signup">Contact</Link>
+                                <Link href="/pricing">Pricing</Link>
                             </li>
+                          
                         </ul>
                     </div>
 
