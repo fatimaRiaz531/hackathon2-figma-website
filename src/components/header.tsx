@@ -41,7 +41,7 @@ function Header() {
                             {/* Select Dropdown */}
                             <Select>
                                 <SelectTrigger className="w-[180px] cursor-pointer">
-                                    <span className="text-lg font-medium">Menu</span>
+                                    <span className="text-lg font-medium">Home</span>
                                 </SelectTrigger>
                                 <SelectContent>
                                     <SelectGroup>
@@ -72,6 +72,11 @@ function Header() {
 
                             <li className='p-4 hover:underline underline-offset-2'>
                                 <Link href="/pricing">Pricing</Link>
+                            </li>
+                            <li>
+                                <button className='md:hidden lg:hidden'>
+                                <Link href="/loginPage">Login</Link>
+                                </button>
                             </li>
 
                         </ul>
