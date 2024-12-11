@@ -40,7 +40,7 @@ export default function MainHero2() {
                             </div>
                         </div>
                         {/* Accessories */}
-                        <div className="grid grid-cols-1 gap-6">
+                        <div className="grid grid-cols-2 gap-6">
                             {/* Accessories */}
                             <div className="relative group">
                                 <img
@@ -69,10 +69,13 @@ export default function MainHero2() {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
         </div>
     );
 }
+
+
+
+
