@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 export default function MainHero2() {
@@ -7,7 +8,7 @@ export default function MainHero2() {
             <section className="py-12 bg-white relative z-20">
                 <div className="container mx-auto px-4">
                     <h2 className="text-center text-2xl md:text-3xl font-bold text-gray-800 mb-4">
-                        EDITOR'S PICK
+                        EDITORS PICK
                     </h2>
                     <p className="text-center text-gray-600 mb-8">
                         Problems trying to resolve the conflict between
@@ -15,7 +16,7 @@ export default function MainHero2() {
                     <div className="grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
                         {/* Men */}
                         <div className="relative group">
-                            <img
+                            <Image
                                 src="/images/mainpage/capboy.jpg"
                                 alt="Men"
                                 className="w-full h-auto rounded-lg object-cover"
@@ -28,7 +29,7 @@ export default function MainHero2() {
                         </div>
                         {/* Women */}
                         <div className="relative group">
-                            <img
+                            <Image
                                 src="/images/mainpage/brownhair.jpg"
                                 alt="Women"
                                 className="w-full h-auto rounded-lg object-cover"
@@ -43,7 +44,7 @@ export default function MainHero2() {
                         <div className="grid grid-cols-2 gap-6">
                             {/* Accessories */}
                             <div className="relative group">
-                                <img
+                                <Image
                                     src="/images/mainpage/browncote.jpg"
                                     alt="Accessories"
                                     className="w-full h-auto rounded-lg object-cover"
@@ -57,7 +58,7 @@ export default function MainHero2() {
 
                             {/* Kids */}
                             <div className="relative group">
-                                <img
+                                <Image
                                     src="/images/mainpage/yellowshirt.jpg"
                                     alt="Kids"
                                     className="w-full h-auto rounded-lg object-cover"
