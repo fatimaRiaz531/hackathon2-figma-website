@@ -45,7 +45,6 @@ const PricingFAQs = () => {
         Classical physics
       </p>
 
-      {/* FAQ Grid */}
       <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {faqs.map((faq, index) => (
           <div key={index} className="flex flex-col space-y-2">
@@ -57,7 +56,6 @@ const PricingFAQs = () => {
         ))}
       </div>
 
-      {/* Footer */}
       <div className="text-center mt-12">
         <p className="text-gray-500">
           Have not got your answer?{" "}

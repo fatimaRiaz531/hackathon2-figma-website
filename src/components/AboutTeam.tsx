@@ -6,17 +6,17 @@ const Team = () => {
     {
       name: "Username",
       profession: "Profession",
-      image: "/images/team-member1.PNG", // Replace with the actual image path
+      image: "/images/team-member1.PNG", 
     },
     {
       name: "Username",
       profession: "Profession",
-      image: "/images/team-member2.PNG", // Replace with the actual image path
+      image: "/images/team-member2.PNG",
     },
     {
       name: "Username",
       profession: "Profession",
-      image: "/images/team-member3.PNG", // Replace with the actual image path
+      image: "/images/team-member3.PNG", 
     },
   ];
 

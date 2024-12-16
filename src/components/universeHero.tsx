@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function Universe() {
     return (
-        <div className="bg-white flex flex-col md:flex-row"> {/* Change flex direction on md screen */}
-            <div className="md:w-1/2 w-full"> {/* Image div takes full width on small screens */}
+        <div className="bg-white flex flex-col md:flex-row"> 
+            <div className="md:w-1/2 w-full">
                 <Image
                     src="/images/universe/universe.jpg"
                     alt="hero right"
@@ -20,7 +20,6 @@ export default function Universe() {
                     on a small scale.
                 </p>
 
-                {/* Wrapping buttons div in a flex container to push them down on small screens */}
                 <div className="flex flex-col md:flex-row items-center gap-4 mt-8 md:mt-0">
                     <button className="bg-[#2DC071] text-white font-medium py-2 px-4 rounded hover:bg-green-700 transition-all">
                         BUY NOW

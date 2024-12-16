@@ -2,19 +2,19 @@ import Image from "next/image";
 
 const CompaniesSection = () => {
   const companies = [
-    { name: "Hooli", logo: "/images/holi.PNG" },
-    { name: "Lyft", logo: "/images/lyft.PNG" },
-    { name: "Stripe", logo: "/images/stripe.PNG" },
-    { name: "AWS", logo: "/images/aws.PNG" },
-    { name: "Reddit", logo: "/images/face.PNG" },
+    { name: "Hooli", logo: "/images/hooli.png" },
+    { name: "Lyft", logo: "/images/lyft.png" },
+    { name: "Leaf", logo: "/images/leaf.png" },
+    { name: "Stripe", logo: "/images/stripe.png" },
+    { name: "AWS", logo: "/images/aws.png" },
+    { name: "Reddit", logo: "/images/face.png" },
   ];
   return (
     <section className="py-16 px-4 sm:px-8 lg:px-16 bg-white text-center">
-      {/* Header */}
      
 
       {/* Companies Logos */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
         {companies.map((company, index) => (
           <div key={index} className="flex justify-center">
             <Image

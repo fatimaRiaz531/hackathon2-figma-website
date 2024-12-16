@@ -1,10 +1,7 @@
 export default function MainHero() {
     return (
         <div className="pt-16 relative bg-[url('/images/mainpage/mainpic.jpg')] bg-cover bg-center sm:bg-[top_center] lg:bg-center h-[400px] sm:h-[600px] lg:h-[716px] ">
-        {/* Overlay */}
         <div className="absolute inset-0"></div>
-  
-        {/* Text Content */}
         <div className="absolute top-40 lg:left-24 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:transform-none lg:text-left text-center text-white px-4">
           <h2 className="text-[14px] sm:text-[16px] md:text-[18px] font-semibold tracking-wide mb-2 sm:mb-4">
             SUMMER 2020

@@ -26,10 +26,10 @@ function AchivementAbout() {
         {/* Image Section */}
       <div className="mt-8">
         <Image
-          src="/images/video.PNG" // Replace with the actual image path
+          src="/images/video.PNG" 
           alt="video"
-          width={1200} // Set the desired width
-          height={600} // Set the desired height
+          width={1200} 
+          height={600} 
           className="rounded-md mx-auto"
         />
       </div>

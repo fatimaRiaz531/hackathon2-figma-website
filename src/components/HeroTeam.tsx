@@ -52,13 +52,9 @@ const Team = () => {
 
   return (
     <section className="py-16 px-4 sm:px-8 lg:px-16 bg-white text-center">
-      {/* Header */}
       <div className="mb-12">
         <h2 className="text-3xl font-bold text-gray-900">Meet Our Team</h2>
-       
       </div>
-
-      {/* Team Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
         {teamMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center">

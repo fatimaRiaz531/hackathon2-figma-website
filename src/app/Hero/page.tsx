@@ -1,11 +1,9 @@
-import Hero from "@/components/hero"
-import HeroTeam from "@/components/HeroTeam"
-import FreeTrail from "@/components/freetrail"
 import MainHero from "@/components/mainHero"
 import MainHero2 from "@/components/mainHero2"
 import ProductSection from "@/components/ProductSection"
 import GreenBG from "@/components/greenbg"
 import Universe from "@/components/universeHero"
+import FeaturedPosts from "@/components/Feature"
 
 export default function HomePage(){
     return(
@@ -15,12 +13,7 @@ export default function HomePage(){
         <ProductSection />
         <GreenBG />
         <Universe />
-        
-         <Hero />
-         <HeroTeam />
-         <FreeTrail />
-         
-       
+        <FeaturedPosts />
        </div>
     )
 }

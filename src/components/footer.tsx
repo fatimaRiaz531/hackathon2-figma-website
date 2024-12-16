@@ -7,12 +7,10 @@ export default function Footer() {
 
         <footer className="bg-white flex flex-col items-center py-10 px-4 text-black">
             <div className="w-full max-w-7xl flex justify-between items-center mt-4">
-                {/* Left Side: Heading */}
                 <h3 className="text-xl font-bold">
                     Bandage
                 </h3>
 
-                {/* Right Side: Icons */}
                 <div className="flex space-x-4">
                     <Link href="#" aria-label="Facebook">
                         <FontAwesomeIcon
@@ -36,7 +34,6 @@ export default function Footer() {
             </div>
             <br /> <br />
             <div className="w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-y-9">
-                {/* Company Info */}
                 <div>
                     <h1 className="font-bold text-sm mb-4">Company Info</h1>
                     <ul>
@@ -47,7 +44,6 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                {/* Legal */}
                 <div>
                     <h1 className="font-bold text-sm mb-4">Legal</h1>
                     <ul>
@@ -58,7 +54,6 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                {/* Features */}
                 <div>
                     <h1 className="font-bold text-sm mb-4">Features</h1>
                     <ul>
@@ -69,7 +64,6 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                {/* Resources */}
                 <div>
                     <h1 className="font-bold text-sm mb-4">Resources</h1>
                     <ul>
@@ -80,7 +74,6 @@ export default function Footer() {
                     </ul>
                 </div>
 
-                {/* Get In Touch */}
                 <div>
                     <h1 className="font-bold text-sm mb-4">Get In Touch</h1>
                     <div className="mb-4">

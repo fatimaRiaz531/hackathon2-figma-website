@@ -9,7 +9,6 @@ const Hero = () => {
       <h4 className="text-xl text-gray-900">What we do</h4>
       <h2 className="text-4xl font-bold text-gray-800">Innovation tailored for you</h2>
 
-      {/* Breadcrumb Navigation */}
       <nav className="flex justify-center items-center space-x-2 text-black mt-4 text-sm">
         <Link href="/Hero" className="hover:underline">
           Home

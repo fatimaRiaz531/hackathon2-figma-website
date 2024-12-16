@@ -44,7 +44,6 @@ const FreeTrial: React.FC = () => {
                 <FaTwitter size={20} />
               </a>
             </div>
-          {/* Add more icons similarly */}
         </div>
       </div>
   );
