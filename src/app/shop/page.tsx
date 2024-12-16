@@ -13,10 +13,7 @@ const Shop = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-4">
       <div className="flex items-center justify-between ml-6 mb-8">
-  {/* Left Section - Shop Heading */}
   <h1 className="text-3xl font-bold text-left">Shop</h1>
-
-  {/* Right Section - Breadcrumb */}
   <div className="flex items-center gap-2">
     <a href="/Hero" className="hover:underline text-black">
       Home
@@ -33,7 +30,7 @@ const Shop = () => {
             key={item.id}
             className="relative rounded-lg overflow-hidden group cursor-pointer"
           >
-            <img
+            <Image
               src={item.image}
               alt={item.title}
               className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
@@ -57,7 +54,7 @@ const Shop = () => {
           </h6>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between px-4">
+        <div className="mt-8 flex flex-wrap items-center justify-between px-4 mr-0">
           {/* Left Section - Showing Results */}
           <div>
             <h6 className="text-[#737373] font-bold">
@@ -67,7 +64,7 @@ const Shop = () => {
 
           <div className="flex flex-wrap items-center justify-between gap-6 p-4">
   {/* Center Section - Views */}
-  <div className="flex items-center gap-4">
+  <div className="flex items-center gap-4 ml-6">
     <p className="text-[#737373] font-bold">Views:</p>
 
     {/* Grid View Button */}
@@ -82,7 +79,7 @@ const Shop = () => {
     </button>
 
     {/* List View Button */}
-    <button className="w-8 h-8">
+    <button className="w-8 h-8 ">
       <Image
         src="/images/shop/btn2.png"
         alt="List View"
@@ -94,7 +91,7 @@ const Shop = () => {
   </div>
 
   {/* Right Section - Dropdown and Filter Button */}
-  <div className="flex items-center gap-4">
+  <div className="flex items-center gap-4 mr-8">
     {/* Popularity Dropdown */}
     <select className="border rounded px-4 py-2 text-[#737373]">
       <option>Popularity</option>

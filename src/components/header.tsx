@@ -51,7 +51,6 @@ function Header() {
                     <SelectItem value="/Hero">Home</SelectItem>
                     <SelectItem value="/shop">Shop</SelectItem>
                     <SelectItem value="/blog">Blog</SelectItem>
-                    <SelectItem value="/team">Team</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>

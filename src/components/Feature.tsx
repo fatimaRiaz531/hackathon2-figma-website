@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Image from 'next/image';
 const posts = [
     {
         id: 1,
-        image: '/images/feature/1.jpg',
+        Image: '/images/feature/1.jpg',
         title: "Loudest à la Madison #1 (L'intégral)",
         description: 'We focus on ergonomics and meeting you where you work. Its only a keystroke away.',
         date: '22 April 2021',
@@ -11,7 +11,7 @@ const posts = [
     },
     {
         id: 2,
-        image: '/images/feature/2.jpg',
+        Image: '/images/feature/2.jpg',
         title: "Loudest à la Madison #1 (L'intégral)",
         description: 'We focus on ergonomics and meeting you where you work. Its only a keystroke away.',
         date: '22 April 2021',
@@ -19,7 +19,7 @@ const posts = [
     },
     {
         id: 3,
-        image: '/images/feature/3.jpg',
+        Image: '/images/feature/3.jpg',
         title: "Loudest à la Madison #1 (L'intégral)",
         description: 'We focus on ergonomics and meeting you where you work. Its only a keystroke away.',
         date: '22 April 2021',
@@ -38,7 +38,7 @@ const FeaturedPosts = () => {
                 {posts.map((post) => (
                     <div key={post.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                         <div className="relative">
-                            <img src={post.image} alt={post.title} className="w-[400px] h-[300px] object-cover" />
+                            <Image src={post.Image} alt={post.title} className="w-[400px] h-[300px] object-cover" />
                             <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">NEW</div>
                         </div>
                         <div className="p-4">

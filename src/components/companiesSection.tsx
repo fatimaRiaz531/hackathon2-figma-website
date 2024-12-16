@@ -2,12 +2,12 @@ import Image from "next/image";
 
 const CompaniesSection = () => {
   const companies = [
-    { name: "Hooli", logo: "/images/hooli.png" },
-    { name: "Lyft", logo: "/images/lyft.png" },
-    { name: "Leaf", logo: "/images/leaf.png" },
-    { name: "Stripe", logo: "/images/stripe.png" },
-    { name: "AWS", logo: "/images/aws.png" },
-    { name: "Reddit", logo: "/images/face.png" },
+    { name: "Hooli", logo: "/images/companieslogo/hooli.png" },
+    { name: "Lyft", logo: "/images/companieslogo/lyft.png" },
+    { name: "Leaf", logo: "/images/companieslogo/leaf.png" },
+    { name: "Stripe", logo: "/images/companieslogo/stripe.png" },
+    { name: "AWS", logo: "/images/companieslogo/aws.png" },
+    { name: "Reddit", logo: "/images/companieslogo/face.png" },
   ];
   return (
     <section className="py-16 px-4 sm:px-8 lg:px-16 bg-white text-center">
