@@ -1,0 +1,47 @@
+### **API Endpoints**
+
+| **Endpoint**           | **Method** | **Purpose**                              | **Response Example**                                                                 |
+|-------------------------|------------|------------------------------------------|-------------------------------------------------------------------------------------|
+| **/products**           | GET        | Fetch all product details for rental     | `[{"name":"Men's Formal Suit","slug":"mens-formal-suit","rentalPrice":1500}]`       |
+| **/order**              | POST       | Submit new rental order details          | `{"orderId":123, "status":"success"}`                                              |
+| **/shipment-tracking**  | GET        | Fetch real-time tracking updates         | `[{"packageId":"AB1227","status":"In Transit"}]`                                   |
+| **/delivery-status**    | GET        | Fetch express delivery tracking info     | `{"orderId":456, "deliveryTime":"30 mins"}`                                        |
+| **/inventory**          | GET        | Fetch real-time stock levels             | `{"productId":789, "stock":10}`                                                    |
+| **/cart**               | POST       | Add product to cart                      | `{"cartId":101, "items":[{"productId":1, "name":"Women's Party Dress", "quantity":1}]}` |
+| **/wishlist**           | POST       | Add product to wishlist                  | `{"wishlistId":202, "items":[{"productId":2, "name":"Kids' Casual Wear"}]}`        |
+
+---
+
+### **Explanation of Endpoints**
+
+1. **`/products`**:  
+   - Fetches details of all clothing items available for rent (e.g., name, slug, rental price).  
+   - Example: Men's Formal Suit, Women's Party Dress, Kids' Casual Wear.  
+
+2. **`/order`**:  
+   - Submits a new rental order with details like order ID and status.  
+   - Example: Successfully places an order for a rental item.  
+
+3. **`/shipment-tracking`**:  
+   - Provides real-time updates on the shipment status of rented clothing.  
+   - Example: Tracks the delivery status of a rented suit or dress.  
+
+4. **`/delivery-status`**:  
+   - Fetches express delivery tracking information for faster rentals.  
+   - Example: Shows estimated delivery time for urgent orders.  
+
+5. **`/inventory`**:  
+   - Fetches real-time stock levels for clothing items.  
+   - Example: Checks availability of a specific dress or suit.  
+
+6. **`/cart`**:  
+   - Adds clothing items to the cart for rental.  
+   - Example: Adds a Women's Party Dress to the cart with a quantity of 1.  
+
+7. **`/wishlist`**:  
+   - Adds out-of-stock or favorite clothing items to the wishlist.  
+   - Example: Adds Kids' Casual Wear to the wishlist for future rental.  
+
+---
+
+This API structure is customized for your clothing rental web application, ensuring smooth functionality for browsing, ordering, tracking, and managing inventory for women, men, and kids' clothing.

@@ -1,0 +1,8 @@
+How It Works
+Product Schema: Manages all clothing items (women, men, kids) with details like price, size, and rental duration.
+
+Order Schema: Tracks rental orders, including products, quantities, and status.
+
+User Schema: Stores user information, addresses, and wishlists.
+
+Inventory Schema: Tracks real-time stock levels for each product.

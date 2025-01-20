@@ -1,0 +1,24 @@
+### **Key Workflows**
+
+#### **2.1 User Registration**  
+**Process:**  
+- Users sign up via the frontend using Clerk for a seamless registration experience.  
+- Registration details, including preferences for women, men, or kids' clothing, are stored in Sanity CMS.  
+- This ensures personalized recommendations and efficient user management.  
+
+#### **2.2 Product Browsing**  
+**Process:**  
+- Users navigate through clothing categories (women, men, kids) on the frontend.  
+- Sanity CMS API fetches product data, including name, rental price, availability, description, and images.  
+- Dynamic product listings are displayed, allowing users to filter by size, style, or occasion.  
+
+#### **2.3 Order Placement**  
+**Process:**  
+- Users add clothing items to the cart and proceed to checkout.  
+- Order details (selected items, rental duration, shipping address) are sent to Sanity CMS.  
+- Payment is processed via Stripe, with options for cash on delivery or online payment.  
+- A confirmation message is sent to the user's email, and the rental order is recorded in Sanity CMS for tracking.  
+
+---
+
+These workflows are customized for my clothing rental web application, ensuring a smooth and user-friendly experience for renting women, men, and kids' clothing.

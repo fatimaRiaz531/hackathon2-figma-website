@@ -3,7 +3,11 @@ import Image from 'next/image';
 const posts = [
     {
         id: 1,
-        Image: '/images/feature/1.jpg',
+        Image: {
+            src: '/images/feature/1.jpg',
+            width: 800, // yahan width add kiya
+            height: 600 // yahan height add kiya
+        },
         title: "Loudest à la Madison #1 (L'intégral)",
         description: 'We focus on ergonomics and meeting you where you work. Its only a keystroke away.',
         date: '22 April 2021',
@@ -11,7 +15,11 @@ const posts = [
     },
     {
         id: 2,
-        Image: '/images/feature/2.jpg',
+        Image: {
+            src: '/images/feature/2.jpg',
+            width: 800, // yahan width add kiya
+            height: 600 // yahan height add kiya
+        },
         title: "Loudest à la Madison #1 (L'intégral)",
         description: 'We focus on ergonomics and meeting you where you work. Its only a keystroke away.',
         date: '22 April 2021',
@@ -19,14 +27,17 @@ const posts = [
     },
     {
         id: 3,
-        Image: '/images/feature/3.jpg',
+        Image: {
+            src: '/images/feature/3.jpg',
+            width: 800, // yahan width add kiya
+            height: 600 // yahan height add kiya
+        },
         title: "Loudest à la Madison #1 (L'intégral)",
         description: 'We focus on ergonomics and meeting you where you work. Its only a keystroke away.',
         date: '22 April 2021',
         comments: 10,
     },
 ];
-
 const FeaturedPosts = () => {
     return (
         <div className="px-4 sm:px-8 lg:px-16 py-8">
