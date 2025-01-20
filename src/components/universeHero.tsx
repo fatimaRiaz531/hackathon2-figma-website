@@ -5,7 +5,7 @@ export default function Universe() {
         <div className="bg-white flex flex-col md:flex-row"> 
             <div className="md:w-1/2 w-full">
                 <Image
-                    src="/images/universe/universe.jpg"
+                    src="/images/mainpage/universe.jpg"
                     alt="hero right"
                     width={700}
                     height={700}
