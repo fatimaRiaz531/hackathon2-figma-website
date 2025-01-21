@@ -1,7 +1,38 @@
+'use client';
+
 import CompaniesSection from '@/components/companiesSection';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
-const Shop = () => {
+import Link from 'next/link';
+import { Product } from '.types/products'; // Adjust the import path as needed
+import { client } from '@/sanity/lib/client';
+import { forproduct } from '@/sanity/lib/querries';
+import { urlFor } from '@/sanity/lib/image';
+
+const Shop: React.FC = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const fetchedProducts: Product[] = await client.fetch(forproduct);
+        setProducts(fetchedProducts);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        setError('Failed to fetch products. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   const cloths = [
     { id: 1, image: '/images/shop/1.png', title: 'CLOTHS' },
     { id: 2, image: '/images/shop/2.png', title: 'CLOTHS' },
@@ -10,20 +41,40 @@ const Shop = () => {
     { id: 5, image: '/images/shop/5.jpg', title: 'CLOTHS' },
   ];
 
+  if (loading) {
+    return (
+      <div className="text-center py-6">
+        <p>Loading products...</p>
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-gray-900 mx-auto mt-4"></div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-6">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="bg-gray-100 min-h-screen p-4">
+      {/* Header Section */}
       <div className="flex items-center justify-between ml-6 mb-8">
         <h1 className="text-3xl font-bold text-left">Shop</h1>
         <div className="flex items-center gap-2">
-          <a href="/Hero" className="hover:underline text-black">
+          <Link href="/Hero" className="hover:underline text-black">
             Home
-          </a>
+          </Link>
           <span>&gt;</span>
-          <a href="/shop" className="text-gray-400 font-medium">
+          <Link href="/shop" className="text-gray-400 font-medium">
             Shop
-          </a>
+          </Link>
         </div>
       </div>
+
+      {/* Cloths Grid Section */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
         {cloths.map((item) => (
           <div
@@ -33,8 +84,8 @@ const Shop = () => {
             <Image
               src={item.image}
               alt={item.title}
-              width={300} // Add custom width
-              height={200} // Add custom height
+              width={300}
+              height={200}
               className="w-full h-64 object-cover transform group-hover:scale-110 transition-transform duration-300"
             />
             <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
@@ -47,67 +98,79 @@ const Shop = () => {
         ))}
       </div>
 
-      <div className="mt-18 flex flex-wrap items-center justify-between">
-        {/* Left Section - Results Text */}
+      {/* Latest Products Section */}
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <h2 className="text-2xl font-bold mb-6">Our Latest Products</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {products.map((product) => (
+            <Link key={product._id} href={`/product/${product._id}`} passHref>
+              <div className="border rounded-lg shadow-md p-4 hover:shadow-lg transition-all duration-200 cursor-pointer">
+                {product.productImage && (
+                  <Image
+                    src={urlFor(product.productImage).url()}
+                    alt={product.title}
+                    width={200}
+                    height={200}
+                    className="w-full h-48 object-cover rounded-lg"
+                  />
+                )}
+                <h3 className="text-lg font-semibold mt-2">{product.title}</h3>
+                <p className="text-gray-600">${product.rentalPrice}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Filter and View Options Section */}
+      <div className="mt-8 flex flex-wrap items-center justify-between px-4">
         <div>
-          <h6 className="text-[#737373] text-left font-bold mr-8">
-            Showing all 12 results
+          <h6 className="text-[#737373] font-bold">
+            Showing all {products.length} results
           </h6>
         </div>
 
-        <div className="mt-8 flex flex-wrap items-center justify-between px-4 mr-0">
-          {/* Left Section - Showing Results */}
-          <div>
-            <h6 className="text-[#737373] font-bold">Showing all 12 results</h6>
+        <div className="flex flex-wrap items-center justify-between gap-6 p-4">
+          {/* Views Section */}
+          <div className="flex items-center gap-4">
+            <p className="text-[#737373] font-bold">Views:</p>
+            <button className="w-8 h-8">
+              <Image
+                src="/images/shop/btn1.png"
+                alt="Grid View"
+                width={24}
+                height={24}
+                className="w-full h-auto"
+              />
+            </button>
+            <button className="w-8 h-8">
+              <Image
+                src="/images/shop/btn2.png"
+                alt="List View"
+                width={24}
+                height={24}
+                className="w-full h-auto"
+              />
+            </button>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-6 p-4">
-            {/* Center Section - Views */}
-            <div className="flex items-center gap-4 ml-6">
-              <p className="text-[#737373] font-bold">Views:</p>
-
-              {/* Grid View Button */}
-              <button className="w-8 h-8">
-                <Image
-                  src="/images/shop/btn1.png"
-                  alt="Grid View"
-                  width={24}
-                  height={24}
-                  className="w-full h-auto"
-                />
-              </button>
-
-              {/* List View Button */}
-              <button className="w-8 h-8 ">
-                <Image
-                  src="/images/shop/btn2.png"
-                  alt="List View"
-                  width={24}
-                  height={24}
-                  className="w-full h-auto"
-                />
-              </button>
-            </div>
-
-            {/* Right Section - Dropdown and Filter Button */}
-            <div className="flex items-center gap-4 mr-8">
-              {/* Popularity Dropdown */}
-              <select className="border rounded px-4 py-2 text-[#737373]">
-                <option>Popularity</option>
-                <option>Newest</option>
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-              </select>
-
-              {/* Filter Button */}
-              <button className="bg-[#0088FF] text-white px-4 py-2 rounded hover:bg-[#0077E6]">
-                Filter
-              </button>
-            </div>
+          {/* Dropdown and Filter Button */}
+          <div className="flex items-center gap-4">
+            <select className="border rounded px-4 py-2 text-[#737373]">
+              <option>Popularity</option>
+              <option>Newest</option>
+              <option>Price: Low to High</option>
+              <option>Price: High to Low</option>
+            </select>
+            <button className="bg-[#0088FF] text-white px-4 py-2 rounded hover:bg-[#0077E6]">
+              Filter
+            </button>
           </div>
         </div>
-        <CompaniesSection />
       </div>
+
+      {/* Companies Section */}
+      <CompaniesSection />
     </div>
   );
 };

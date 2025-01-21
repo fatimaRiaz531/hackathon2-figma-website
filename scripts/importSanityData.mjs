@@ -41,7 +41,7 @@ async function uploadProduct(product) {
       const document = {
         _type: 'product',
         title: product.title,
-        price: product.price,
+        rentalPrice: product.price,
         productImage: {
           _type: 'image',
           asset: {
