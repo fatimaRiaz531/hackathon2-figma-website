@@ -16,4 +16,10 @@ export interface Product {
   discountPercentage?: number; // Optional field
   isNew: boolean;
   description: string;
+  price: number;
+  slug: {
+    _type: 'slug';
+    current: string;
+  };
+  inventory: number;
 }

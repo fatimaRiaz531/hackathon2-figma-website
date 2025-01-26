@@ -1,8 +1,12 @@
-"use client";
+'use client';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faShoppingCart, faHeart } from "@fortawesome/free-solid-svg-icons";
-import LoginButtons from "./loginButton";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+
+  faShoppingCart,
+  faHeart,
+} from '@fortawesome/free-solid-svg-icons';
+import LoginButtons from './loginButton';
 import {
   Select,
   SelectContent,
@@ -10,10 +14,12 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select';
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import Link from 'next/link';
+import SearchBar from './sreachBar';
 
 function Header() {
   const [open, setOpen] = useState(false);
@@ -24,7 +30,7 @@ function Header() {
   const router = useRouter();
 
   const handleNavigation = (value: string) => {
-    router.push(value); 
+    router.push(value);
   };
 
   return (
@@ -38,8 +44,9 @@ function Header() {
           </div>
 
           <div
-            className={`${open ? "translate-x-0" : "-translate-x-full"
-              } md:flex md:translate-x-0 md:static w-[50%] md:w-auto bg-gray-100 md:bg-transparent absolute top-0 left-0 h-screen md:h-auto z-40 transition-transform duration-500 ease-in-out text-gray-700 md:text-center`}
+            className={`${
+              open ? 'translate-x-0' : '-translate-x-full'
+            } md:flex md:translate-x-0 md:static w-[50%] md:w-auto bg-gray-100 md:bg-transparent absolute top-0 left-0 h-screen md:h-auto z-40 transition-transform duration-500 ease-in-out text-gray-700 md:text-center`}
           >
             <ul className="flex flex-col md:flex-row md:gap-x-2 lg:gap-x-5 xl:gap-x-5 2xl:gap-x-10 sm:text-md md:text-sm lg:text-md xl:text-md text-gray-400 md:text-black font-bold">
               <Select onValueChange={handleNavigation}>
@@ -75,18 +82,23 @@ function Header() {
           </div>
 
           <div className="flex gap-x-4 items-center">
-            <div className="flex w-full bg-gray-200 rounded-md items-center lg:hidden md:hidden">
-              <FontAwesomeIcon icon={faSearch} className="text-xl ml-2" />
+            <div>
+              <SearchBar />
             </div>
 
             <div className="block">
-              <FontAwesomeIcon
-                icon={faShoppingCart}
-                className="text-gray-700 mr-1 text-2xl"
-              ></FontAwesomeIcon>
+              <Link href="/cart">
+                <FontAwesomeIcon
+                  icon={faShoppingCart}
+                  className="text-gray-700 mr-1 text-2xl"
+                ></FontAwesomeIcon>
+              </Link>
             </div>
             <div className="block">
-              <FontAwesomeIcon icon={faHeart} className="text-2xl"></FontAwesomeIcon>
+              <FontAwesomeIcon
+                icon={faHeart}
+                className="text-2xl"
+              ></FontAwesomeIcon>
             </div>
 
             <button

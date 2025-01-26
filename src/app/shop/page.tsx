@@ -4,10 +4,12 @@ import CompaniesSection from '@/components/companiesSection';
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Product } from '.types/products'; // Adjust the import path as needed
 import { client } from '@/sanity/lib/client';
-import { forproduct } from '@/sanity/lib/querries';
+import { allproducts } from '@/sanity/lib/querries';
 import { urlFor } from '@/sanity/lib/image';
+import { Product } from '../../../types/products';
+import { addToCart } from '../actions/actions';
+import Swal from 'sweetalert2';
 
 const Shop: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -20,7 +22,7 @@ const Shop: React.FC = () => {
         setLoading(true);
         setError(null);
 
-        const fetchedProducts: Product[] = await client.fetch(forproduct);
+        const fetchedProducts: Product[] = await client.fetch(allproducts);
         setProducts(fetchedProducts);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -40,6 +42,21 @@ const Shop: React.FC = () => {
     { id: 4, image: '/images/shop/4.png', title: 'CLOTHS' },
     { id: 5, image: '/images/shop/5.jpg', title: 'CLOTHS' },
   ];
+
+  const handleAddToCart = (e: React.MouseEvent, product: Product) => {
+    e.preventDefault();
+    Swal.fire({
+      position: 'top-right',
+      icon: 'success',
+      title: `${product.title} added to cart`,
+      showConfirmButton: false,
+      timer: 1000,
+      toast: true, // Display as a toast
+      background: '#f0f0f0', // Change background color
+      iconColor: '#4caf50', // Change icon color
+    });
+    addToCart(product);
+  };
 
   if (loading) {
     return (
@@ -103,21 +120,51 @@ const Shop: React.FC = () => {
         <h2 className="text-2xl font-bold mb-6">Our Latest Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {products.map((product) => (
-            <Link key={product._id} href={`/product/${product._id}`} passHref>
-              <div className="border rounded-lg shadow-md p-4 hover:shadow-lg transition-all duration-200 cursor-pointer">
-                {product.productImage && (
-                  <Image
-                    src={urlFor(product.productImage).url()}
-                    alt={product.title}
-                    width={200}
-                    height={200}
-                    className="w-full h-48 object-cover rounded-lg"
-                  />
-                )}
-                <h3 className="text-lg font-semibold mt-2">{product.title}</h3>
-                <p className="text-gray-600">${product.rentalPrice}</p>
-              </div>
-            </Link>
+            <div
+              key={product._id}
+              className="border rounded-lg shadow-md p-4 hover:shadow-lg transition-all duration-200 cursor-pointer"
+            >
+              {/* Highlighted Line: Check if slug exists before rendering the Link */}
+              {product.slug?.current ? (
+                <Link href={`/product/${product.slug.current}`}>
+                  {product.productImage && (
+                    <Image
+                      src={urlFor(product.productImage).url()}
+                      alt={product.title}
+                      width={200}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  )}
+                  <h3 className="text-lg font-semibold mt-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-gray-600">${product.price}</p>
+                </Link>
+              ) : (
+                <div>
+                  {product.productImage && (
+                    <Image
+                      src={urlFor(product.productImage).url()}
+                      alt={product.title}
+                      width={200}
+                      height={200}
+                      className="w-full h-48 object-cover rounded-lg"
+                    />
+                  )}
+                  <h3 className="text-lg font-semibold mt-2">
+                    {product.title}
+                  </h3>
+                  <p className="text-gray-600">${product.price}</p>
+                </div>
+              )}
+              <button
+                onClick={(e) => handleAddToCart(e, product)}
+                className="bg-gradient-to-r from-blue-500 to-purple-400 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:scale-110 transition-transform duration-200 ease-in-out w-full mt-2"
+              >
+                Add To Cart
+              </button>
+            </div>
           ))}
         </div>
       </div>

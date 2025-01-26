@@ -29,10 +29,11 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-4">
-          <FontAwesomeIcon icon={faFacebook} />
-          <FontAwesomeIcon icon={faTwitter} />
-          <FontAwesomeIcon icon={faInstagram} />
-          <FontAwesomeIcon icon={faYoutube} />
+
+          <FontAwesomeIcon className=" hover:bg-blue-400" icon={faFacebook} />
+          <FontAwesomeIcon className=" hover:bg-blue-400" icon={faTwitter} />
+          <FontAwesomeIcon className=" hover:bg-blue-400" icon={faInstagram} />
+          <FontAwesomeIcon className=" hover:bg-blue-400" icon={faYoutube} />
         </div>
       </div>
 

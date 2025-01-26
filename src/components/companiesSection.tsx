@@ -25,7 +25,7 @@ const CompaniesSection = () => {
         {companies.map((company, index) => (
           <div
             key={index}
-            className="flex justify-center cursor-pointer"
+            className="flex justify-center cursor-pointer "
             onClick={() => handleLogoClick(company.name)}
           >
             <Image
