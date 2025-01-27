@@ -30,7 +30,7 @@ export const product = defineType({
     },
     {
       name: 'productImage',
-      type: 'productImage',
+      type: 'image',
       title: 'Product Image',
       validation: (rule) => rule.required(),
       options: {

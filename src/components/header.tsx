@@ -90,8 +90,9 @@ function Header() {
               <Link href="/cart">
                 <FontAwesomeIcon
                   icon={faShoppingCart}
-                  className="text-gray-700 mr-1 text-2xl"
+                  className="text-gray-700 mr-1 text-2xl" 
                 ></FontAwesomeIcon>
+             
               </Link>
             </div>
             <div className="block">

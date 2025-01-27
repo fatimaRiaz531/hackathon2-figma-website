@@ -32,14 +32,14 @@ export default async function ProductPage({ params }: ProductPageProps) {
   return (
     <div className="max-w-7xl mx-auto px-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div className="aspect-square">
+        <div className=" w-full aspect-square mt-9">
           {product.productImage && (
             <Image
               src={urlFor(product.productImage).url()}
               alt={product.title}
               width={200}
               height={600}
-              className="w-full h-48 object-cover rounded-lg"
+              className="w-full h-full object-cover rounded-lg"
             />
           )}
         </div>
