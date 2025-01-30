@@ -41,9 +41,8 @@ export const updateCartQuantity = (productId: string, quantity: number) => {
 
 // Get all items in the cart
 export const getCartItems = (): Product[] => {
-    return JSON.parse(localStorage.getItem('cart') || '[]');
+    return JSON.parse(localStorage.getItem('cart') || '[]'); // Ensure this returns the correct items
 };
-
 // Clear the entire cart
 export const clearCart = () => {
     localStorage.removeItem('cart'); // Remove cart from localStorage

@@ -11,7 +11,7 @@ export const product = defineType({
       type: 'string',
       validation: (rule) => rule.required(),
       description:
-        "The name of the clothing item (e.g., 'Floral Summer Dress').",
+        "The name of the product item (e.g., 'party,decoration,formal').",
     },
     {
       name: 'slug',
@@ -26,7 +26,7 @@ export const product = defineType({
       type: 'text',
       title: 'Description',
       validation: (rule) => rule.required(),
-      description: 'A detailed description of the clothing item.',
+      description: 'A detailed description of the product item.',
     },
     {
       name: 'productImage',
@@ -36,7 +36,7 @@ export const product = defineType({
       options: {
         hotspot: true, // Enable image cropping
       },
-      description: 'Upload an image of the clothing item.',
+      description: 'Upload an image of the product item.',
     },
     {
       name: 'originalPrice',
@@ -98,7 +98,7 @@ export const product = defineType({
           { title: 'Traditional', value: 'traditional' },
         ],
       },
-      description: 'The category of the clothing item.',
+      description: 'The category of the product item.',
     },
     {
       name: 'tags',

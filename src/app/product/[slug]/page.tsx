@@ -45,9 +45,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
         </div>
         <div className="flex flex-col gap-8">
           <h1 className="text-4xl font-bold">{product.title}</h1>
-          <p className="text-2xl font-sans">{product.price}</p>
+          <p className="text-2xl font-sans">${product.price}</p>
           <p className="text-2xl font-sans text-blue-500">{product.availability}</p>
-          <p className="text-2xl font-sans">{product.rentalPrice}</p>
+          <p className="text-2xl font-sans text-red-300">{product.rentalPrice}</p>
           <p className=" font-sans text-sm">{product.description}</p>
          
           <p className="text-2xl font-sans">{product.isNew}</p>
