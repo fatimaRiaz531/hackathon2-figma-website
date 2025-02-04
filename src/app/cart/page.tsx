@@ -32,7 +32,11 @@ const CartPage = () => {
       if (result.isConfirmed) {
         removeFromCart(id);
         setCartItems(getCartItems());
-        Swal.fire('Removed!', 'Item has been removed from your cart.', 'success');
+        Swal.fire(
+          'Removed!',
+          'Item has been removed from your cart.',
+          'success'
+        );
       }
     });
   };
@@ -58,7 +62,8 @@ const CartPage = () => {
 
   const calculateTotal = () => {
     return cartItems.reduce((total, item) => {
-      const price = typeof item.price === 'string' ? parseFloat(item.price) : item.price;
+      const price =
+        typeof item.price === 'string' ? parseFloat(item.price) : item.price;
       const quantity = item.inventory || 0;
       return total + price * quantity;
     }, 0);
@@ -66,11 +71,29 @@ const CartPage = () => {
 
   const router = useRouter();
 
+  const clearCart = () => {
+    // Implement your logic to clear the cart
+    // For example, you might have a function like this:
+    // localStorage.removeItem('cart'); // If you're using local storage
+  };
+
   const handleProceed = () => {
     if (cartItems.length > 0) {
-      router.push(`/checkout?items=${encodeURIComponent(JSON.stringify(cartItems))}`);
+      // Clear the cart items
+      clearCart(); // Assuming you have a function to clear the cart
+
+      // Update the state to reflect the empty cart
+      setCartItems([]);
+
+      // Prepare items for checkout
+      const items = encodeURIComponent(JSON.stringify(cartItems));
+      router.push(`/checkout?items=${items}`);
     } else {
-      Swal.fire('Cart is empty', 'Please add items to your cart before proceeding.', 'warning');
+      Swal.fire(
+        'Cart is empty',
+        'Please add items to your cart before proceeding.',
+        'warning'
+      );
     }
   };
 
@@ -81,7 +104,10 @@ const CartPage = () => {
       <div className="space-y-6">
         {cartItems.length > 0 ? (
           cartItems.map((item) => (
-            <div key={item._id} className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md">
+            <div
+              key={item._id}
+              className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md"
+            >
               <div className="flex items-center">
                 {item.productImage && (
                   <Image
@@ -96,14 +122,29 @@ const CartPage = () => {
                   <h2 className="text-lg font-semibold">{item.title}</h2>
                   <p className="text-gray-500">Price: ${item.price}</p>
                   <div className="flex items-center mt-2">
-                    <button onClick={() => handleDecrement(item._id)} className="px-2 py-1 bg-gray-300 rounded-md hover:bg-gray-400">-</button>
+                    <button
+                      onClick={() => handleDecrement(item._id)}
+                      className="px-2 py-1 bg-gray-300 rounded-md hover:bg-gray-400"
+                    >
+                      -
+                    </button>
                     <span className="mx-2">{item.inventory}</span>
-                    <button onClick={() => handleIncrement(item._id)} className="px-2 py-1 bg-gray-300 rounded-md hover:bg-gray-400">+</button>
+                    <button
+                      onClick={() => handleIncrement(item._id)}
+                      className="px-2 py-1 bg-gray-300 rounded-md hover:bg-gray-400"
+                    >
+                      +
+                    </button>
                   </div>
                 </div>
               </div>
               <div className="flex items-center">
-                <button onClick={() => handleRemove(item._id)} className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">Remove</button>
+                <button
+                  onClick={() => handleRemove(item._id)}
+                  className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
+                >
+                  Remove
+                </button>
               </div>
             </div>
           ))
@@ -116,9 +157,16 @@ const CartPage = () => {
         <div className="mt-8 bg-white p-4 rounded-lg shadow-md">
           <div className="flex justify-between items-center">
             <h2 className="text-xl font-semibold">Total:</h2>
-            <p className="text-xl font-bold text-gray-800">${calculateTotal().toFixed(2)}</p>
+            <p className="text-xl font-bold text-gray-800">
+              ${calculateTotal().toFixed(2)}
+            </p>
           </div>
-          <button onClick={handleProceed} className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">Proceed to Checkout</button>
+          <button
+            onClick={handleProceed}
+            className="mt-4 w-full px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600"
+          >
+            Proceed to Checkout
+          </button>
         </div>
       )}
     </div>
