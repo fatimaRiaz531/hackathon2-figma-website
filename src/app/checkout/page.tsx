@@ -60,7 +60,10 @@ const Checkout: React.FC = () => {
     }
   }, []);
 
-  const subTotal = cartItems.reduce((total, item) => total + item.price * item.inventory, 0);
+  const subTotal = cartItems.reduce(
+    (total, item) => total + item.price * item.inventory,
+    0
+  );
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormValues({
@@ -76,7 +79,8 @@ const Checkout: React.FC = () => {
       email: !formValues.email,
       phone: !formValues.phone,
       address: !formValues.address,
-      zipCode: !formValues.zipCode.trim() || !/^\d{5}$/.test(formValues.zipCode),
+      zipCode:
+        !formValues.zipCode.trim() || !/^\d{5}$/.test(formValues.zipCode),
       city: !formValues.city.trim(),
     };
     setFormErrors(errors);
@@ -125,6 +129,19 @@ const Checkout: React.FC = () => {
 
           await client.create(orderData);
           localStorage.removeItem('appliedDiscount');
+
+          // Reset form values and cart items
+          setFormValues({
+            firstName: '',
+            lastName: '',
+            email: '',
+            phone: '',
+            address: '',
+            zipCode: '',
+            city: '',
+          });
+          setCartItems([]); // Clear the cart items
+
           Swal.fire({
             title: 'Success!',
             text: 'Your Order has been successfully processed!',
@@ -147,7 +164,12 @@ const Checkout: React.FC = () => {
       <div>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 py-4">
-            <Link href="/cart" className="text-gray-500 hover:text-black transition text-sm">Cart</Link>
+            <Link
+              href="/cart"
+              className="text-gray-500 hover:text-black transition text-sm"
+            >
+              Cart
+            </Link>
             <CgMoveRight />
             <span>Checkout</span>
           </nav>
@@ -159,7 +181,10 @@ const Checkout: React.FC = () => {
             <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
             {cartItems.length > 0 ? (
               cartItems.map((item) => (
-                <div key={item._id} className="flex items-center gap-4 py-3 border-b">
+                <div
+                  key={item._id}
+                  className="flex items-center gap-4 py-3 border-b"
+                >
                   <div className="w-16 h-16 rounded">
                     {item.productImage && (
                       <Image
@@ -173,7 +198,9 @@ const Checkout: React.FC = () => {
                   </div>
                   <div className="flex-1">
                     <h3 className="text-sm font-medium">{item.title}</h3>
-                    <p className="text-xs text-gray-500">Quantity: {item.inventory}</p>
+                    <p className="text-xs text-gray-500">
+                      Quantity: {item.inventory}
+                    </p>
                     <p>${(item.price * item.inventory).toFixed(2)}</p>
                   </div>
                 </div>
@@ -182,9 +209,20 @@ const Checkout: React.FC = () => {
               <p className="text-xs font-medium">No items in Cart</p>
             )}
             <div className="text-right pt-4">
-              <p className="text-sm">SubTotal: <span className="font-medium">${subTotal.toFixed(2)}</span></p>
-              <p>Discount: <span className="font-medium">-${discount.toFixed(2)}</span></p>
-              <p className="text-lg font-semibold">Total: <span className="font-medium">${(subTotal - discount).toFixed(2)}</span></p>
+              <p className="text-sm">
+                SubTotal:{' '}
+                <span className="font-medium">${subTotal.toFixed(2)}</span>
+              </p>
+              <p>
+                Discount:{' '}
+                <span className="font-medium">-${discount.toFixed(2)}</span>
+              </p>
+              <p className="text-lg font-semibold">
+                Total:{' '}
+                <span className="font-medium">
+                  ${(subTotal - discount).toFixed(2)}
+                </span>
+              </p>
             </div>
           </div>
           <div className="bg-white border rounded-lg p-6 space-y-4 mt-4">
