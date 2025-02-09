@@ -1,27 +1,48 @@
+// schemas/order.js
 export default {
   name: 'order',
   type: 'document',
   title: 'Order',
   fields: [
-    { name: 'firstName', title: 'First Name', type: 'string' },
-    { name: 'lastName', title: 'Last Name', type: 'string' },
-    { name: 'email', title: 'Email', type: 'email' },
-    { name: 'phoneNumber', title: 'Phone Number', type: 'string' }, // Ensure this matches your document
     {
-      name: 'address', // If you want to keep it as a string, ensure it's used correctly in your documents
-      title: 'Address',
-      type: 'string', // If you want to store it as a single string, this is fine
+      name: 'customer',
+      title: 'Customer Information',
+      type: 'object',
+      fields: [
+        { name: 'firstName', title: 'First Name', type: 'string' },
+        { name: 'lastName', title: 'Last Name', type: 'string' },
+        { name: 'email', title: 'Email', type: 'email' },
+        {
+          name: 'address',
+          title: 'Address',
+          type: 'object',
+          fields: [
+            { name: 'street', title: 'Street', type: 'string' },
+            { name: 'city', title: 'City', type: 'string' },
+            { name: 'zipCode', title: 'Zip Code', type: 'string' },
+          ],
+        },
+        { name: 'phoneNumber', title: 'Phone Number', type: 'string' }, // Changed to 'string' for consistency
+      ],
     },
-    { name: 'zipCode', title: 'Zip Code', type: 'string' }, // Ensure this matches your document
-    { name: 'city', title: 'City', type: 'string' }, // Ensure this matches your document
+    {
+      name: 'shippingAddress',
+      title: 'Shipping Address',
+      type: 'object',
+      fields: [
+        { name: 'street', title: 'Street', type: 'string' },
+        { name: 'city', title: 'City', type: 'string' },
+        { name: 'zipCode', title: 'Zip Code', type: 'string' },
+      ],
+    },
     {
       name: 'cartItems',
-      type: 'array',
       title: 'Cart Items',
+      type: 'array',
       of: [
         {
           type: 'reference',
-          to: { type: 'product' },
+          to: [{ type: 'product' }], // Ensure this matches the product schema name
         },
       ],
     },
